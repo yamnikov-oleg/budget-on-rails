@@ -1,0 +1,65 @@
+<% content_for :title do %>
+<h1><%= link_to "< Настройки", root_path %></h1>
+<% end %>
+
+<h2>Доходы</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @incomes.each do |income| %>
+      <tr>
+      	<%= form_for(income) do |f| %>
+	        <td><%= f.text_field :name %></td>
+	        <td><%= f.number_field :value %></td>
+	        <td><%= f.submit 'Сохранить' %> <%= link_to 'Удалить', income, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    <tr>
+    	<%= form_for(@income) do |f| %>
+    		<td><%= f.text_field :name %></td>
+    		<td><%= f.number_field :value %></td>
+    		<td><%= f.submit 'Добавить' %></td>
+    	<% end %>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Расходы</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @outcomes.each do |outcome| %>
+      <tr>
+      	<%= form_for(outcome) do |f| %>
+	        <td><%= f.text_field :name %></td>
+	        <td><%= f.number_field :value %></td>
+	        <td><%= f.submit 'Сохранить' %> <%= link_to 'Удалить', outcome, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    <tr>
+    	<%= form_for(@outcome) do |f| %>
+    		<td><%= f.text_field :name %></td>
+    		<td><%= f.number_field :value %></td>
+    		<td><%= f.submit 'Добавить' %></td>
+    	<% end %>
+    </tr>
+  </tbody>
+</table>

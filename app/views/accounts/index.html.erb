@@ -1,0 +1,30 @@
+<% content_for :title do %>
+<h1>Список счетов</h1>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Month</th>
+      <th>Year</th>
+      <th>Money</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.month %></td>
+        <td><%= account.year %></td>
+        <td><%= account.money %></td>
+        <td><%= link_to 'Show', account %></td>
+        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Account', new_account_path %>

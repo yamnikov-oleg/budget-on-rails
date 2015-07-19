@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_id: 
+  day: 1
+  value: 1
+  limit: 1
+  desc: MyString
+
+two:
+  account_id: 
+  day: 1
+  value: 1
+  limit: 1
+  desc: MyString

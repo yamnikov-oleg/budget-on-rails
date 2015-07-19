@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BudgetOnRails</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<div id="container">
+
+<div id="header">
+<div id="menu">
+<%= yield :menu %>
+<%= link_to '', settings_path, class: 'gear' %>
+</div>
+<%= yield :title %>
+</div>
+
+<div id="content">
+<%= yield %>
+</div>
+
+</div>
+
+</body>
+</html>

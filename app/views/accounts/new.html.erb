@@ -1,0 +1,50 @@
+<% content_for :title do %>
+<h1><%= link_to "< Новый счет", root_path %></h1>
+<% end %>
+
+<%= form_for(@account) do |f| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+      <ul>
+      <% @account.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :month %><br>
+    <%= f.number_field :month %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year %>
+  </div>
+
+  <div class="field">
+  	<p>Доходы</p>
+  	<% @incomes.each do |income| %>
+  	<div>
+  		<p><%= check_box_tag "account[income[#{income.id}]]" %><%= income.name %> (<%= income.value %>)</p>
+  	</div>
+  	<% end %>
+  </div>
+  <div class="field">
+  	<p>Расходы</p>
+  	<% @outcomes.each do |outcome| %>
+  	<div>
+  		<p><%= check_box_tag "account[outcome[#{outcome.id}]]" %><%= outcome.name %> (<%= outcome.value %>)</p>
+  	</div>
+  	<% end %>
+  </div>
+  <div class="field">
+  	<p>Остаток средств</p>
+  	<%= number_field_tag "account[start_balance]", 0 %>
+  </div>
+  <div class="actions">
+  	<%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,101 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-image: url('/gradient.jpg');
+	background-attachment: fixed;
+	background-position: center; 
+	background-size: cover;
+	font-family: 'PT Sans';
+}
+
+#container {
+	width: 600px;
+	margin: 20px auto;
+	box-sizing: border-box;
+	border: 1px solid rgba(0,0,0,0.2);
+	border-bottom-width: 3px;
+	border-radius: 5px;
+	background-color: rgba(255,255,255,0.9);
+}
+
+#header {
+	padding: 20px 50px;
+	background-color: #2669A0;
+	color: white;
+	border: 0px solid rgba(0,0,0, 0.05);
+	border-bottom-width: 5px;
+}
+
+#header h1 {
+	font-weight: normal;
+	font-size: 32px;
+	float: left;
+}
+
+#header h1 a {
+	font-weight: bold;
+	font-size: 24px;
+	color: white;
+	text-decoration: none;
+}
+
+.gear {
+	background-image: url('/gear.png');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.edit {
+	background-image: url('/edit.png');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+#menu {
+	float: right;
+	margin-top: 10px;
+}
+
+#menu a {
+	display: block;
+	width: 24px;
+	height: 24px;
+	opacity: 0.6;
+	float: left;
+	margin-left: 20px;
+}
+
+#menu a:hover {
+	opacity: 1;
+}
+
+#header::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+#content {
+	padding: 20px 50px;
+}

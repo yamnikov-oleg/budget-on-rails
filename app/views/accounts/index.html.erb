@@ -2,29 +2,27 @@
 <h1>Список счетов</h1>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Month</th>
-      <th>Year</th>
-      <th>Money</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<% content_for :menu do %>
+<%= link_to '', new_account_path, class: 'add' %>
+<% end %>
 
-  <tbody>
-    <% @accounts.each do |account| %>
-      <tr>
-        <td><%= account.month %></td>
-        <td><%= account.year %></td>
-        <td><%= account.money %></td>
-        <td><%= link_to 'Show', account %></td>
-        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @accounts.sort_by{|a| a.month + a.year*12}.reverse.group_by{|a| a.year}.each do |year, accounts| %>
+<h2><%= year %></h2>
 
-<br>
+<% accounts.each do |account| %>
+  <div class="account position-relative show-on-hover-parent <%= account.money >= 0 ? "good" : "bad" %>">
+    <a href="<%= account_path(account) %>">
+      <span class="month">
+        <%= smonth(account.month) %>
+      </span><br>
+      <span class="money">
+        <%= account.money %>р
+      </span>
+    </a>
+    <%= link_to '', account, method: :delete, data: { confirm: 'Удалить счет?' }, class: "remove remove_button show-on-hover-child" %>
+  </div>
+<% end %>
 
-<%= link_to 'New Account', new_account_path %>
+<div class="clear"></div>
+
+<% end %>

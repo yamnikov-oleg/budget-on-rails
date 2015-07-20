@@ -58,20 +58,6 @@ body {
 	text-decoration: none;
 }
 
-.gear {
-	background-image: url('/gear.png');
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
-}
-
-.edit {
-	background-image: url('/edit.png');
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
-}
-
 #menu {
 	float: right;
 	margin-top: 10px;
@@ -98,4 +84,54 @@ body {
 
 #content {
 	padding: 20px 50px;
+}
+
+#content h2 {
+	border: 0px solid rgba(0,0,0,0.2);
+	border-bottom-width: 1px;
+	padding: 5px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+#content h2:first-child {
+	margin-top: 0px;
+}
+
+.account {
+	width: 108px;
+	box-sizing: border-box;
+	float: left;
+	padding: 20px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	text-align: center;
+	color: white;
+	border-radius: 5px;
+	border: 0px solid rgba(0,0,0,0.2);
+	border-bottom-width: 2px;
+}
+
+.account a {
+	color: white;
+	text-decoration: none;
+}
+
+.account .month {
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.remove_button {
+	display: block;
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	opacity: 0.6;
+}
+
+.remove_button:hover {
+	opacity: 1;
 }

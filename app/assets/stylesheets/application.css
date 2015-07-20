@@ -82,22 +82,6 @@ body {
 	clear: both;
 }
 
-#content {
-	padding: 20px 50px;
-}
-
-#content h2 {
-	border: 0px solid rgba(0,0,0,0.2);
-	border-bottom-width: 1px;
-	padding: 5px;
-	margin-bottom: 20px;
-	margin-top: 20px;
-}
-
-#content h2:first-child {
-	margin-top: 0px;
-}
-
 .account {
 	width: 108px;
 	box-sizing: border-box;

@@ -1,0 +1,27 @@
+.gear {
+	background-image: url('/gear.png');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.edit {
+	background-image: url('/edit.png');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.add {
+	background-image: url('/add.png');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.remove {
+	background-image: url('/remove.png');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}

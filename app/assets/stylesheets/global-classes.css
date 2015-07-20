@@ -1,0 +1,27 @@
+.block {
+	display: block;
+}
+
+.clear {
+	clear: both;
+}
+
+.position-relative {
+	position: relative;
+}
+
+.show-on-hover-child {
+	visibility: hidden;
+}
+
+.show-on-hover-parent:hover .show-on-hover-child {
+	visibility: visible;
+}
+
+.good {
+	background-color: #0ab54c;
+}
+
+.bad {
+	background-color: #C78F00;
+}

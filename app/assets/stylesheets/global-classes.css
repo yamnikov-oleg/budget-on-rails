@@ -36,4 +36,10 @@
 	padding: 20px 50px;
 	border: 0px solid rgba(0,0,0,0.2);
 	border-top-width: 4px;
+	color: white;
+}
+
+.dark-box h3 {
+	color: #aaa;
+	margin: 5px 0px;
 }

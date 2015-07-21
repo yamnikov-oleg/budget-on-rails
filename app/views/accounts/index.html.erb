@@ -6,26 +6,30 @@
 <%= link_to '', new_account_path, class: 'add' %>
 <% end %>
 
-<% @accounts.sort_by{|a| a.month + a.year*12}.reverse.group_by{|a| a.year}.each do |year, accounts| %>
-<h3 class="normal-padding"><%= year %></h2>
-
 <div class="dark-box">
-<% accounts.each do |account| %>
-  <div class="account position-relative show-on-hover-parent <%= account.money >= 0 ? "good" : "bad" %>">
-    <a href="<%= account_path(account) %>">
-      <span class="month">
-        <%= smonth(account.month) %>
-      </span><br>
-      <span class="money">
-        <%= account.money %>р
-      </span>
-    </a>
-    <%= link_to '', account, method: :delete, data: { confirm: 'Удалить счет?' }, class: "remove remove_button show-on-hover-child" %>
-  </div>
-<% end %>
-<div class="clear"></div>
+
+  <% @accounts.sort_by{|a| a.month + a.year*12}.reverse.group_by{|a| a.year}.each do |year, accounts| %>
+
+    <h3><%= year %></h3>
+
+    <% accounts.each do |account| %>
+
+      <div class="account position-relative show-on-hover-parent <%= account.money >= 0 ? "good" : "bad" %>">
+        <a href="<%= account_path(account) %>">
+          <span class="month">
+            <%= smonth(account.month) %>
+          </span><br>
+          <span class="money">
+            <%= account.money %>р
+          </span>
+        </a>
+        <%= link_to '', account, method: :delete, data: { confirm: 'Удалить счет?' }, class: "remove remove_button show-on-hover-child" %>
+      </div>
+
+    <% end %>
+
+    <div class="clear"></div>
+
+  <% end %>
+
 </div>
-
-
-
-<% end %>

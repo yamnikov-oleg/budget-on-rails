@@ -17,24 +17,30 @@
 
 <div class="dark-box">
 
-  <% if @days_filled < days(@account.month) %>
-    <%= form_tag new_record_account_path(@account) do %>
-      <%= number_field_tag :value, nil, placeholder: "Доступно: #{@spending_limit}р" %>
-      <%= text_field_tag :desc, nil, placeholder: "Необязательно" %>
-      <%= submit_tag 'Новая запись' %>
-    <% end %>
-  <% end %>
+  <table class="records">
 
-  <% @account.records.reverse_each do |record| %>
-    <div class="record_item item float-everything <%= record.value < record.limit ? "bad" : "good" %>">
-      <div class="record_day"><%= record.day %></div>
-      <%= form_tag edit_record_account_path(@account), class: "record_form" do %>
-        <%= hidden_field_tag :day, record.day %>
-        <%= number_field_tag :value, record.value, class: "invisible_field record_value" %>
-        <%= text_field_tag :desc, record.desc %>
-        <%= submit_tag 'Обновить' %>
-      <% end %>
-    </div>
-  <% end %>
+    <% if @days_filled < days(@account.month) %>
+      <tr>
+        <td>+</td>
+        <%= form_tag new_record_account_path(@account) do %>
+          <td><%= number_field_tag :value, nil, placeholder: "Доступно: #{@spending_limit}р", class: "invisible_field record_value" %></td>
+          <td><%= text_field_tag :desc, nil, placeholder: "Необязательно", class: "invisible_field record_desc" %></td>
+          <td><%= submit_tag 'Добавить' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+
+    <% @account.records.reverse_each do |record| %>
+      <tr>
+        <td><%= record.day %></td>
+        <%= form_tag edit_record_account_path(@account), class: "record_form" do %>
+          <%= hidden_field_tag :day, record.day %>
+          <td class="<%= record.value < record.limit ? "bad" : "good" %>"><%= text_field_tag :value, record.value, class: "invisible_field record_value" %></td>
+          <td><%= text_field_tag :desc, record.desc, class: "invisible_field record_desc" %></td>
+          <td><%= submit_tag 'Обновить' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
 
 </div>

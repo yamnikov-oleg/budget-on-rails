@@ -78,14 +78,13 @@ class AccountsController < ApplicationController
   def new_record
     if days_filled < days(@account.month)
       record = @account.records.new(record_params)
-      record.limit = @spending_limit
+      record.limit = -@spending_limit
       record.day = days_filled + 1
-      record.save
+      if record.save
+        update_money(@account)
+        @account.save
+      end
     end
-
-    update_money(@account)
-    @account.save
-
     redirect_to @account
   end
 

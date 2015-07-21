@@ -2,36 +2,39 @@
 <h1><%= link_to "< #{month(@account.month)} #{@account.year}", root_path %></h1>
 <% end %>
 
-<p>
-  <strong>Доступная трата:</strong>
-  <%= @spending_limit %>р
-</p>
+<div class="normal-padding">
 
-<p>
-  <strong>Осталось денег:</strong>
-  <%= @account.money %>р
-</p>
+  <div>
+    <p class="label">
+      Остаток
+    </p>
+    <p class="money-left">
+      <%= @account.money %>р
+    </p>
+  </div>
 
-<p>
-  <strong>Записи:</strong>
+</div>
+
+<div class="dark-box">
+
   <% if @days_filled < days(@account.month) %>
     <%= form_tag new_record_account_path(@account) do %>
-    	<%= number_field_tag :value %>
-    	<%= text_field_tag :desc %>
-    	<%= submit_tag 'Новая запись' %>
+      <%= number_field_tag :value, nil, placeholder: "Доступно: #{@spending_limit}р" %>
+      <%= text_field_tag :desc, nil, placeholder: "Необязательно" %>
+      <%= submit_tag 'Новая запись' %>
     <% end %>
   <% end %>
+
   <% @account.records.reverse_each do |record| %>
-  	<div>
-      <p>
-        <%= form_tag edit_record_account_path(@account) do %>
-          <i><%= record.day %></i>:
-          <%= hidden_field_tag :day, record.day %>
-          <%= number_field_tag :value, record.value %>
-          <%= text_field_tag :desc, record.desc %>
-          <%= submit_tag 'Обновить' %>
-        <% end %>
-      </p>
+    <div class="record_item item float-everything <%= record.value < record.limit ? "bad" : "good" %>">
+      <div class="record_day"><%= record.day %></div>
+      <%= form_tag edit_record_account_path(@account), class: "record_form" do %>
+        <%= hidden_field_tag :day, record.day %>
+        <%= number_field_tag :value, record.value, class: "invisible_field record_value" %>
+        <%= text_field_tag :desc, record.desc %>
+        <%= submit_tag 'Обновить' %>
+      <% end %>
     </div>
   <% end %>
-</p>
+
+</div>

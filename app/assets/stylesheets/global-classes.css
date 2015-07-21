@@ -30,6 +30,10 @@
 	padding: 20px 50px;
 }
 
+.small-padding {
+	padding: 5px;
+}
+
 .dark-box {
 	box-sizing: border-box;
 	background-color: #444;
@@ -42,4 +46,51 @@
 .dark-box h3 {
 	color: #aaa;
 	margin: 5px 0px;
+}
+
+.item {
+	box-sizing: border-box;
+	color: white;
+	border-radius: 5px;
+	border: 0px solid rgba(0,0,0,0.2);
+	border-bottom-width: 2px;
+}
+
+.label {
+	color: #888;
+	font-weight: bold;
+}
+
+.float-everything > * {
+	display: block;
+	float: left;
+}
+
+.float-everything::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.invisible_field {
+	color: inherit;
+	background-color: transparent;
+	border: 0px solid gray;
+	box-sizing: border-box;
+	padding: 5px;
+	border-radius: 4px;
+}
+
+.item .invisible_field {
+	border: 0px solid white;
+}
+
+.invisible_field:hover {
+	border-bottom-width: 1px;
+}
+
+.invisible_field:focus {
+	background-color: white;
+	color: black;
+	border: none;
 }
